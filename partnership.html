@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>さくらサービスセンター連携設計</title>
+<style>
+:root{--green:#1F4B3F;--sakura:#C4506E;--ink:#1D2226;--muted:#5A646D;--line:#E2E6E8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#EFF2F1;color:var(--ink);line-height:1.9;font-size:16px;
+ font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;-webkit-text-size-adjust:100%}
+.sheet{max-width:900px;margin:0 auto;background:#fff;padding:34px 40px 60px;box-shadow:0 2px 30px rgba(20,40,30,.08);min-height:100vh}
+.back{display:inline-block;margin-bottom:22px;font-size:.88rem;color:var(--green);text-decoration:none;font-weight:700}
+.back:hover{text-decoration:underline}
+h1{font-size:1.62rem;color:var(--green);letter-spacing:.03em;line-height:1.45;margin:0 0 18px;padding-bottom:12px;border-bottom:2.5px solid var(--green)}
+h2{font-size:1.2rem;color:var(--green);margin:32px 0 12px;padding-left:12px;border-left:5px solid var(--sakura);line-height:1.5}
+h3{font-size:1.04rem;color:var(--green);margin:22px 0 8px}
+h4{font-size:.98rem;margin:18px 0 6px}
+p{margin:0 0 13px}
+ul,ol{margin:0 0 14px 22px}li{margin-bottom:5px}
+hr{border:0;border-top:1px solid var(--line);margin:26px 0}
+a{color:#2E6B58}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.87em;background:#F2F4F5;padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:#1E2A26;color:#E8EFEB;padding:16px 18px;border-radius:10px;overflow-x:auto;margin:0 0 16px;font-size:.84rem;line-height:1.7}
+pre code{background:none;padding:0;color:inherit;word-break:normal}
+blockquote{border-left:4px solid var(--sakura);background:#FCEFF2;padding:11px 18px;border-radius:0 8px 8px 0;margin:0 0 16px}
+blockquote p{margin:0}
+.tw{overflow-x:auto;margin:0 0 18px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:520px}
+th{background:var(--green);color:#fff;text-align:left;padding:9px 11px;font-size:.84rem;white-space:nowrap}
+td{padding:8px 11px;border-top:1px solid #EDF0F1;vertical-align:top}
+tbody tr:nth-child(even){background:#FAFBFB}
+@media(max-width:700px){.sheet{padding:22px 18px 46px}body{font-size:15.5px}h1{font-size:1.34rem}}
+</style></head>
+<body><div class="sheet"><a class="back" href="./">&larr; 資料一覧にもどる</a>
+<h1>さくらサービスセンター × 桜台自治会サイト — 連携設計</h1>
+<p>出典: <code>一般社団法人さくらサービスセンター 事業計画・概要書.pptx</code>（全10枚・2026年7月・設立準備室）<br>作成: 2026-08-04</p>
+<hr>
+<h2>1. 事業の骨格（スライド要約）</h2>
+<div class='tw'><table><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>法人</td><td>一般社団法人さくらサービスセンター（設立準備室）／千葉県市原市<b>桜台4-23-1</b>／0436-66-1634</td></tr><tr><td>代表理事</td><td>辻 史人（住まい・生活の管理業務18年／<b>2022年から桜台自治会役員</b>）</td></tr><tr><td>専務理事</td><td>米原 章二</td></tr><tr><td>構造</td><td>4者の相互扶助エコシステム＝<b>行政・自治会</b>（情報連携・後援）／<b>一般会員</b>（住民＋離れて暮らす家族）／<b>企業会員</b>（地元の職人）／<b>運営</b>（相談受付・無料点検・マッチング・進行管理）</td></tr><tr><td>中核価値</td><td><b>無料住宅点検＝悪徳業者の防波堤</b>（不要な工事勧誘ゼロ）</td></tr><tr><td>サービス</td><td>庭木手入れ・高圧洗浄・ハウスクリーニング・エアコン洗浄／給湯器・水回り交換・外壁屋根塗装／防犯カメラ・防犯フィルム／耐震補強・感震ブレーカー／空き家管理</td></tr><tr><td>一般会員</td><td>入会金無料・<b>年会費12,000円</b>＋有料オプション「見守りサブスク」</td></tr><tr><td>企業会員</td><td>入会金50,000円・月会費30,000円／地域密着実績・安心防犯ポリシー同意・明朗会計・<b>損害賠償保険加入</b>が要件</td></tr><tr><td>インフラ</td><td><b>公式HP</b>（理念・<b>価格表の明確化</b>・子世代向け案内・企業会員一覧）＋<b>公式LINE/Lステップ</b>（写真送信相談・点検予約・進捗共有）</td></tr><tr><td>原点</td><td>実家に来た屋根修繕業者の見積が詐欺同然だった。消費生活センターでクーリングオフ。「地元の親世代を悪徳業者から守る自警団的事業」</td></tr></tbody></table></div>
+<p><b>桜台自治会サイトの改善は、この事業の「信頼基盤」そのもの</b>です（スライド3の行政・自治会レイヤー）。ただし、そのまま繋ぐと止まります。理由は次章。</p>
+<hr>
+<h2>2. 最大の論点 — 「桜台お助けマン」と重複している</h2>
+<p>調査で判明した<b>最重要事項</b>。桜台自治会には既に <b>「桜台お助けマン（お助けマン互助会）」</b> が存在し、<b>現役で稼働</b>しています（<code>/chiiki_katudou/otasukeman.htm</code>・<b>2026-07-30更新</b>）。</p>
+<h3>お助けマンの実態</h3>
+<ul><li>65歳以上・身体が不自由な方の暮らしを手伝う<b>会員制の互助組織</b></li><li>サービス: <b>電気器具点検・修理／屋外作業（庭木の伐採・刈り込み・草取り）／水回り（水漏れ・排水）／屋内作業／外出援助／家事手伝い／ヘアカット</b></li><li>料金: <b>30分400円</b>＋材料・ガソリン代実費</li><li>会費: 利用会員 入会金1,000円／協力会員 免除／賛助会員 年1,000円〜（団体5,000円〜）</li><li>会員数: <b>120名</b>（協力23・利用88・賛助9）※平成31年3月末</li><li>申込先: <b>桜台自治会館 0436-66-1341</b>（＝自治会の代表電話）</li><li>千葉県社会福祉協議会の広報誌『福祉ちば』に掲載実績あり</li></ul>
+<h3>重複している領域</h3>
+<p><b>庭木の手入れ・水回り・電気器具</b> はサービス内容が正面から重なります。<br>しかも料金は <b>30分400円 vs 年会費12,000円</b>。何も整理しないまま自治会に持ち込むと、</p>
+<blockquote>「お助けマンがあるのに、なぜ？」 「自治会の互助会から客を取るのか」</blockquote>
+<p>で確実に止まります。<b>ここを先に片付けないと、他がどれだけ良くても通りません。</b></p>
+<h3>整理の答え — 競合ではなく「受け皿」</h3>
+<div class='tw'><table><thead><tr><th></th><th>桜台お助けマン</th><th>さくらサービスセンター</th></tr></thead><tbody><tr><td>主体</td><td>住民同士の互助（協力会員＝ボランティア）</td><td><b>有資格の専門業者</b>（企業会員）</td></tr><tr><td>領域</td><td>資格も保険も要らない<b>軽作業</b></td><td><b>工事</b>：屋根・外壁塗装、給湯器交換、防犯カメラ設置、耐震補強、感震ブレーカー</td></tr><tr><td>金額</td><td>30分400円の小口</td><td>数十万円規模＝<b>詐欺の温床になる価格帯</b></td></tr><tr><td>保険</td><td>協力会員の補償はQ&amp;Aで個別対応</td><td><b>損害賠償保険加入が入会要件</b></td></tr><tr><td>目的</td><td>日常の困りごと</td><td><b>悪質業者の防波堤</b>（無料点検）</td></tr></tbody></table></div>
+<p><b>お助けマンのFAQには「Q8. お助けマンで出来ない仕事がありますか？」という項目が既にあります。</b><br>さくらサービスセンターは、そこに書かれた"できない仕事"の<b>正式な受け皿</b>として位置づけるのが唯一の正解です。</p>
+<p>さらに補強材料が2つ:</p>
+<ul><li>お助けマンは<b>協力会員23名に対し利用会員88名</b>。担い手が明確に不足しています（スライド2の「役員高齢化で成り手不足」と同じ構造）。<b>奪う話ではなく、支える話にできる</b></li><li>料金表が「現在準備中」のまま。<b>さくら側の「価格表の明確化」はここを補完する</b></li></ul>
+<blockquote><b>アクション: 自治会役員会に上げる前に、お助けマン運営側と役割分担を合意しておく。</b> これが提案の成否を分けます。</blockquote>
+<hr>
+<h2>3. 自治会サイトに既にある「接続点」（追い風）</h2>
+<p>事業テーマは、実は<b>自治会が既に公式に扱っている</b>ものばかりでした。ゼロから説得する必要がありません。</p>
+<div class='tw'><table><thead><tr><th>既存ページ</th><th>内容</th><th>事業との接続</th></tr></thead><tbody><tr><td><code>/chiiki_katudou/minsei_iin.html</code></td><td><b>「悪質商法の被害は市原市消費生活センター 21-0844」「おれおれ詐欺は市原警察署生活安全課 41-0110」を明記</b></td><td><b>悪質商法対策は自治会の公式テーマ。</b>辻さんの原体験と完全一致</td></tr><tr><td><code>/seikatu_jouho/</code> 配下</td><td>消費者庁へ8リンク・国民生活センターへ3リンク</td><td>同上。既に住民向けに啓発している</td></tr><tr><td><code>/chiiki_katudou/patrol2.htm</code></td><td>防犯ボランティアパトロール隊 <b>64名・青パト所有・千葉県警パトロール実施者証</b>（※更新は2013年で停止）</td><td>防犯カメラ・防犯フィルム・<b>空き家巡回</b>と直結</td></tr><tr><td><code>/jichikai_files/bousai/bousai_shiori.html</code></td><td>防災用しおり『災害に備えて』</td><td><b>感震ブレーカー・家具の耐震補強</b>と直結</td></tr><tr><td><code>/jichikai_files/SKP_Project.htm</code></td><td><b>桜台自治会改革プロジェクト（2021/11〜2022/11）</b>。添付資料に「回覧板の見直し」「<b>専門事務員の制度設計</b>」「自治会改善ボランティアの制度設計」</td><td><b>自治会自身が「今のやり方では続かない」と結論済み。</b>外部委託の議論も済んでいる</td></tr><tr><td><code>/chiiki_katudou/PC_soudansitu.html</code>・<code>HP_iinkai/pc_school/</code></td><td>パソコン相談室・パソコン教室を自前運営</td><td><b>LINE登録支援を自治会と一緒にやれる。</b>Lステップ導線の定着に直結</td></tr></tbody></table></div>
+<p><b>辻さんは2022年から役員</b> ＝ SKPの終盤に立ち会っている。<b>「HP刷新はSKPの続き」</b>という文脈で出すのが最も通りやすい形です。</p>
+<hr>
+<h2>4. 立場の整理（設計上の制約）</h2>
+<p>辻さんは<b>自治会役員であると同時に、住民に年会費12,000円のサービスを売る法人の代表理事</b>です。自治会公式サイトから有料サービスへ誘導すれば「自治会が特定業者に肩入れしている」と見られ、<b>事業と自治会の両方の信頼を同時に損ないます</b>。これは倫理の問題である以前に、事業が潰れるリスクです。</p>
+<p>対処は難しくありません。<b>切り分ければいい。</b></p>
+<div class='tw'><table><thead><tr><th></th><th>方針</th></tr></thead><tbody><tr><td>自治会サイト</td><td><b>中立を保つ。</b> 悪質商法の注意喚起は「公共情報」として、消費生活センター・警察・国民生活センターと<b>並列</b>で扱う。特定業者名は出さない</td></tr><tr><td>さくらサービスセンター</td><td><b>独立ドメインの独立HP</b>を持つ。会員募集・価格表・申込はすべてそちら</td></tr><tr><td>連携</td><td><b>役員会／総会の正式決議</b>を経て「後援」として明示する。<b>決議を経た事実こそが信頼の源</b>になる</td></tr><tr><td>HP改善そのもの</td><td><b>無償の地域貢献</b>として実施し、社外では実績として語る。ただし<b>自治会サイト上では宣伝しない</b></td></tr></tbody></table></div>
+<h3>自治会サイト上で「やってはいけない」こと</h3>
+<ul><li>決議前にさくらサービスセンターへのリンク・バナーを置く</li><li>「自治会推奨」「自治会公認」の表記</li><li>自治会サイトでの会員募集</li><li>回覧板PDFに案内を紛れ込ませる</li></ul>
+<h3>逆に「やるべき」こと</h3>
+<ul><li><b>自治会サイトを純粋に良くする。</b> これが最大かつ最速の信頼獲得手段</li><li><b>「悪質商法・訪問販売にご注意」ページの新設</b>（公共情報として）。クーリングオフの手順、消費生活センター 21-0844、警察 41-0110、国民生活センター。<b>辻さんの原体験そのもので、自治会にとって100%正当なコンテンツ</b></li><li>空き家・高齢者見守りの現状を自治会と共有し、課題を可視化する</li></ul>
+<hr>
+<h2>5. さくらサービスセンター側HPの要件（スライド5を踏まえ）</h2>
+<p>自治会サイトとは<b>設計を真逆にする</b>。読者が違うためです。</p>
+<div class='tw'><table><thead><tr><th>要素</th><th>設計方針</th></tr></thead><tbody><tr><td><b>価格表</b></td><td>スライドで「明確化」と明言されている通り、<b>必ず載せる。詐欺との差別化の核</b>がこれ。「無料点検→不要な工事は勧めない→価格は公開」の3点セット</td></tr><tr><td><b>子世代向け導線</b></td><td>離れて暮らすご家族＝スマホ・PC世代。<b>親向けの大きな文字とは別の設計</b>でよい。「実家の屋根、大丈夫ですか」から入る</td></tr><tr><td><b>企業会員一覧</b></td><td>顔写真・資格・<b>損害賠償保険加入の明示</b>。ここが「地元の知っている人」の証明になる</td></tr><tr><td><b>代表挨拶</b></td><td>実家に来た詐欺同然の見積の話は<b>そのまま載せる</b>。最も強い説得材料</td></tr><tr><td><b>一般社団法人であることの説明</b></td><td>「非営利性・透明性」をスライドで謳っている以上、<b>なぜ株式会社ではないのかを言語化</b>する。ここを曖昧にすると訪問販売業者と区別がつかない</td></tr><tr><td><b>LINE導線</b></td><td>Lステップ登録。パソコン相談室での登録支援とセットで設計</td></tr></tbody></table></div>
+<hr>
+<h2>6. 提案を通す順番</h2>
+<pre><code>① 自治会サイト改善を「SKPの続き」として提案（無償・地域貢献）
+   → 通れば信頼を獲得。ここでは事業の話を一切しない
+        ↓
+② お助けマン運営側と役割分担を合意（第2章）
+   → 内部の反対を先に消す。ここが最大の関門
+        ↓
+③ 「悪質商法にご注意」ページを自治会と共同で整備
+   → 事業テーマを自治会の公式テーマとして共有する
+        ↓
+④ 役員会へ「後援」を正式に諮る
+        ↓
+⑤ さくらサービスセンターHP公開・会員募集開始</code></pre>
+<p><b>①〜③は事業の話をしないまま進む</b>のが要点です。順番を飛ばして⑤から入ると、①の信頼を使い切って終わります。</p>
+<hr>
+<h2>7. 確認したいこと</h2>
+<ol><li><b>お助けマン運営側との関係</b> — 辻さんは既に接点があるか。役割分担の話はできているか</li><li><b>HP改善の提案先</b> — 役員会か、ホームページ作成委員会か。SKPの関係者は今も残っているか</li><li><b>さくらサービスセンターHPの着手時期</b> — 自治会サイトと並行で作るか、①が通ってからか（<b>並行を推奨。ただし公開は④の後</b>）</li><li><b>「後援」の想定レベル</b> — 名義後援だけか、回覧板での告知まで求めるか。後者なら総会決議が要る可能性が高い</li></ol>
+</div></body></html>

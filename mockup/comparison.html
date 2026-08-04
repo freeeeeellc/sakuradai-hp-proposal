@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>桜台自治会ホームページ　現在と改善案の比較</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0; padding:40px 28px 48px; background:#F2F4F3; color:#1D2226;
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;
+  line-height:1.8;
+}
+.head{max-width:1000px; margin:0 auto 34px; text-align:center}
+.head h1{margin:0 0 8px; font-size:1.6rem; letter-spacing:.05em; color:#1F4B3F}
+.head p{margin:0; color:#5A646D; font-size:.95rem}
+
+.cols{display:flex; gap:44px; justify-content:center; align-items:flex-start; flex-wrap:wrap; max-width:1000px; margin:0 auto}
+.col{width:392px}
+
+.label{display:flex; align-items:center; gap:10px; margin-bottom:14px}
+.label b{font-size:1.16rem; letter-spacing:.04em}
+.pill{font-size:.76rem; font-weight:700; color:#fff; padding:4px 13px; border-radius:999px; letter-spacing:.05em}
+.now .pill{background:#8A8F94}
+.new .pill{background:#C4506E}
+.now b{color:#5A646D}
+.new b{color:#1F4B3F}
+
+/* スマートフォンの枠 */
+.phone{
+  width:392px; height:846px; border-radius:40px; background:#22262B;
+  padding:11px; box-shadow:0 10px 30px rgba(20,35,30,.22); position:relative;
+}
+.screen{
+  width:370px; height:824px; border-radius:30px; overflow:hidden; background:#fff; position:relative;
+}
+.screen iframe{border:0; display:block; transform-origin:0 0}
+/* 左：現行サイト（レイアウト幅800pxをスマホ幅へ縮小＝実機と同じ見え方） */
+.now iframe{width:800px; height:1782px; transform:scale(.4625)}
+/* 右：改善案（スマホ幅そのまま。上部の「改善案」帯はこのページ側で明示するため隠す） */
+.new iframe{width:370px; height:906px; transform:none; margin-top:-82px}
+
+.notes{margin-top:20px; padding:0; list-style:none}
+.notes li{
+  display:flex; gap:10px; align-items:flex-start; font-size:.93rem;
+  padding:9px 0; border-bottom:1px solid #E2E6E8;
+}
+.notes li > span{flex:1; min-width:0}
+.notes li::before{content:""; flex:none; width:9px; height:9px; border-radius:50%; margin-top:.55em}
+.now .notes li::before{background:#B9483F}
+.new .notes li::before{background:#2E6B58}
+.notes b{font-weight:700}
+
+.foot{max-width:1000px; margin:38px auto 0; text-align:center; font-size:.84rem; color:#5A646D; line-height:1.9}
+.foot span{display:inline-block; background:#fff; border:1px solid #E2E6E8; border-radius:10px; padding:12px 20px}
+
+@media(max-width:900px){ .cols{gap:34px} }
+</style>
+</head>
+<body>
+
+<div class="head">
+  <h1>桜台自治会ホームページ　現在と改善案</h1>
+  <p>どちらも同じスマートフォン（画面幅390px）で表示した場合の見え方です</p>
+</div>
+
+<div class="cols">
+
+  <div class="col now">
+    <div class="label"><span class="pill">現在</span><b>桜台自治会.com</b></div>
+    <div class="phone">
+      <div class="screen">
+        <iframe src="https://xn--6oqs1jd2v68dy45a.com/" title="現在の桜台自治会ホームページ" scrolling="no"></iframe>
+      </div>
+    </div>
+    <ul class="notes">
+      <li><span><b>文字が小さく、指で拡大しないと読めません。</b>全252ページがスマートフォン用の設定を持っていません</span></li>
+      <li><span><b>横にもスクロールが必要です。</b>左のメニューの幅が固定されているためです</span></li>
+      <li><span><b>ページごとの住所（URL）がありません。</b>回覧板をLINEで送っても、相手にはメニューのない画面が開きます</span></li>
+    </ul>
+  </div>
+
+  <div class="col new">
+    <div class="label"><span class="pill">改善案</span><b>スマートフォン対応後</b></div>
+    <div class="phone">
+      <div class="screen">
+        <iframe src="index.html" title="改善案" scrolling="no"></iframe>
+      </div>
+    </div>
+    <ul class="notes">
+      <li><span><b>そのままの大きさで読めます。</b>「文字の大きさ」を大・特大に変えることもできます</span></li>
+      <li><span><b>横スクロールはありません。</b>画面の幅に合わせて自動で並び替わります</span></li>
+      <li><span><b>回覧板をLINEで送れます。</b>1つの記事に1つの住所（URL）があるためです</span></li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="foot">
+  <span>掲載している内容・写真・リンクは、いずれも2026年8月4日時点の桜台自治会ホームページのものです。<br>
+  改善案は表示の仕方を変えたもので、内容そのものは変えていません。</span>
+</div>
+
+</body>
+</html>
