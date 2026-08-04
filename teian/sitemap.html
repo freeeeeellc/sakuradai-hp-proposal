@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>現状のサイトマップ</title>
+<style>
+:root{--green:#1F4B3F;--sakura:#C4506E;--ink:#1D2226;--muted:#5A646D;--line:#E2E6E8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#EFF2F1;color:var(--ink);line-height:1.9;font-size:16px;
+ font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;-webkit-text-size-adjust:100%}
+.sheet{max-width:900px;margin:0 auto;background:#fff;padding:34px 40px 60px;box-shadow:0 2px 30px rgba(20,40,30,.08);min-height:100vh}
+.back{display:inline-block;margin-bottom:22px;font-size:.88rem;color:var(--green);text-decoration:none;font-weight:700}
+.back:hover{text-decoration:underline}
+h1{font-size:1.62rem;color:var(--green);letter-spacing:.03em;line-height:1.45;margin:0 0 18px;padding-bottom:12px;border-bottom:2.5px solid var(--green)}
+h2{font-size:1.2rem;color:var(--green);margin:32px 0 12px;padding-left:12px;border-left:5px solid var(--sakura);line-height:1.5}
+h3{font-size:1.04rem;color:var(--green);margin:22px 0 8px}
+h4{font-size:.98rem;margin:18px 0 6px}
+p{margin:0 0 13px}
+ul,ol{margin:0 0 14px 22px}li{margin-bottom:5px}
+hr{border:0;border-top:1px solid var(--line);margin:26px 0}
+a{color:#2E6B58}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.87em;background:#F2F4F5;padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:#1E2A26;color:#E8EFEB;padding:16px 18px;border-radius:10px;overflow-x:auto;margin:0 0 16px;font-size:.84rem;line-height:1.7}
+pre code{background:none;padding:0;color:inherit;word-break:normal}
+blockquote{border-left:4px solid var(--sakura);background:#FCEFF2;padding:11px 18px;border-radius:0 8px 8px 0;margin:0 0 16px}
+blockquote p{margin:0}
+.tw{overflow-x:auto;margin:0 0 18px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:520px}
+th{background:var(--green);color:#fff;text-align:left;padding:9px 11px;font-size:.84rem;white-space:nowrap}
+td{padding:8px 11px;border-top:1px solid #EDF0F1;vertical-align:top}
+tbody tr:nth-child(even){background:#FAFBFB}
+@media(max-width:700px){.sheet{padding:22px 18px 46px}body{font-size:15.5px}h1{font-size:1.34rem}}
+</style></head>
+<body><div class="sheet"><a class="back" href="./">&larr; 資料一覧にもどる</a>
+<h1>桜台自治会.com サイトマップ（現状）</h1>
+<ul><li>対象: https://桜台自治会.com/ （punycode: <code>xn--6oqs1jd2v68dy45a.com</code>）</li><li>調査日: 2026-08-04</li><li>調査方法: index.html から実リンクを全件BFSクロール（<code>_audit/crawl.py</code>）</li><li><b>HTMLページ 252件 / PDF・文書 2,743件</b></li><li>サーバ: XSERVER（nginx）／生成ツール: IBM Homepage Builder 9・12 + JustSystems Homepage Builder 17</li></ul>
+<hr>
+<h2>0. 全体構造 — フレームセット3分割</h2>
+<pre><code>index.html （&lt;frameset&gt;・Shift_JIS）
+├── top.htm    上部114px … ロゴ／桜の写真／[自治会カレンダー]／アクセスカウンター
+├── left.html  左251px  … 全体メニュー（最新更新日 2026/08/03）
+└── right.html 右       … ホーム本文（更新情報・回覧板発行状況・パソコン相談室ほか）</code></pre>
+<blockquote>⚠ 全ページがこの3フレームの中に表示される。個別ページに固有URLでアクセスするとメニューが出ない。</blockquote>
+<hr>
+<h2>1. メインナビゲーション（left.html の並び順）</h2>
+<div class='tw'><table><thead><tr><th>#</th><th>メニュー</th><th>入口URL</th><th>配下ページ</th><th>最終更新</th></tr></thead><tbody><tr><td>—</td><td>ホーム</td><td><code>/right.html</code></td><td>—</td><td>2026-08-03</td></tr><tr><td>1</td><td>自治会長への手紙（フロム・ツウ）</td><td><code>/jichikai_files/from_to/from_to.html</code></td><td>2</td><td>2025-12-02</td></tr><tr><td>2</td><td>回覧板・自治会発行</td><td><code>/kairan/1_jichikai_kairan.htm</code></td><td>8＋PDF2,252</td><td><b>2026-08-01</b></td></tr><tr><td>3</td><td>回覧板・外部機関発行</td><td><code>/kairan/2_ippan_kairan.html</code></td><td>—</td><td><b>2026-08-03</b></td></tr><tr><td>4</td><td>自治会館の案内</td><td><code>/jichi_kaikan_annnai/annai2.htm</code></td><td>2</td><td>2024-07-28</td></tr><tr><td>5</td><td>自治会ファイル</td><td><code>/jichikai_files/jitikai.htm</code></td><td>9</td><td>2026-06-18</td></tr><tr><td>6</td><td>専門部活動</td><td><code>/senmonbu/senmonbu.htm</code></td><td>12</td><td>2024-07-28</td></tr><tr><td>7</td><td>桜台のイベント</td><td><code>/event/event.html</code></td><td>44</td><td>2024-07-28</td></tr><tr><td>8</td><td>広報誌 桜台だより</td><td><code>/kouhoushi/kouhoushi.htm</code></td><td>3＋PDF275</td><td>2024-07-28</td></tr><tr><td>9</td><td>桜台ニュース</td><td><code>/kouhoushi/sakuradai_news.html</code></td><td>—</td><td>2024-07-28</td></tr><tr><td>10</td><td>地域活動（ボランティア）</td><td><code>/chiiki_katudou/chiikikatudou_b.htm</code></td><td>20</td><td>2025-12-02</td></tr><tr><td>11</td><td>サークル・グループ（同好会）</td><td><code>/circle_group/group.htm</code></td><td>2</td><td>2024-07-28</td></tr><tr><td>12</td><td>みんなの広場</td><td><code>/minnanohiroba/flame_hiroba.html</code></td><td>32（別frameset）</td><td>2024-07-28</td></tr><tr><td>13</td><td>生活情報</td><td><code>/seikatu_jouho/00frame_seikau_jouho.html</code></td><td>11（別frameset）</td><td>2024-07-28</td></tr><tr><td>14</td><td>更新情報のメール配信</td><td><code>/chiiki_katudou/HP_iinkai/mail/mail_haishin.html</code></td><td>—</td><td>2025-12-11</td></tr><tr><td>＋</td><td>自治会カレンダー（top.htmから）</td><td><code>/calendar/2018/calendar201811.html</code></td><td>97</td><td>2024-07-28</td></tr></tbody></table></div>
+<hr>
+<h2>2. セクション別ツリー</h2>
+<h3>回覧板 <code>/kairan/</code> — <b>サイトの主力コンテンツ</b></h3>
+<pre><code>1_jichikai_kairan.htm  自治会発行の回覧（現行・トップに最新15件程度）
+2_ippan_kairan.html    外部機関発行の回覧
+jichikai_kairan2006〜2012_2014.htm  過去分アーカイブ（年別7ページ）
+file/&lt;年&gt;/&lt;月&gt;/*.pdf   回覧の実体PDF … 計 2,252本
+  2006:23 2007:39 2008:55 2009:45 2010:47 2011:52 2012:47 2013:37 2014:28
+  2015:38 2016:205 2017:200 2018:216 2019:204 2020:175 2021:114 2022:129
+  2023:150 2024:175 2025:185 2026:88（8月時点）
+/1_KairanJokyo.htm     回覧発行状況（ルート直下・right.htmlからのみ到達）</code></pre>
+<h3>自治会ファイル <code>/jichikai_files/</code></h3>
+<pre><code>jitikai.htm              目次
+├ 2025keikaku_etc/2025OotakeKaichoAisatui.html  2025年度 会長挨拶
+├ 2025keikaku_etc/2026Seisou_yotei.html         公園清掃実施予定表
+├ SKP_Project.htm        桜台自治会改革プロジェクト（SKP）成果報告書 ★2026/06
+├ bousai/bousai_shiori.html  防災用しおり『災害に備えて』
+├ from_to/from_to.html   自治会長への手紙（+ メイルフォームマニュアル）
+├ hyousyo.htm            市長表彰
+└ jitikai_KakoFile.htm   過去ファイル（2012〜2023年度の計画/決算/役員体制 PDF 31本）</code></pre>
+<h3>議事録 <code>/Gijiroku/</code></h3>
+<pre><code>GijirokuHonbu.htm    本部役員会議事録（PDF 29本）★2026/06更新
+GIjiroku_Honbu.html  ※titleが「外部機関発行の回覧」のまま＝作りかけの重複ページ</code></pre>
+<h3>自治会館 <code>/jichi_kaikan_annnai/</code></h3>
+<pre><code>annai2.htm  自治会の案内 → files/kaikan_mitorizu2.html 見取り図</code></pre>
+<h3>専門部活動 <code>/senmonbu/</code> — 12ページ</h3>
+<pre><code>senmonbu.htm  専門部会
+├ SeikatuKankyo/seisou201207.html   生活環境部・バス停清掃（2012）
+├ bunka/200912hyougo/               挨拶運動の標語（2009）
+├ bunka/tosyo_corner/               図書コーナー（別frameset・図書リスト4種＋案内）
+└ hukusi/051030kaigo.html           介護講習会（2005）</code></pre>
+<h3>桜台のイベント <code>/event/</code> — 44ページ</h3>
+<pre><code>event.html
+├ natu_maturi/  夏祭り 2006〜2012（2006は別frameset・8サブページ）
+├ festival/     25周年記念フェスティバル2006（frameset・16ページ）／フェスティバル2011
+├ bousai_kunren/2009/  防災訓練2009
+└ （chiku_joho/2009radio_taiso/ ラジオ体操2009 へ外だし）</code></pre>
+<h3>広報誌 <code>/kouhoushi/</code> — 3ページ＋PDF275本</h3>
+<pre><code>kouhoushi.htm         桜台だより（PDF一覧）
+sakuradai_news.html   桜台ニュース → news/2010/news201007final.htm</code></pre>
+<h3>地域活動・ボランティア <code>/chiiki_katudou/</code> — 20ページ＋PDF125本</h3>
+<pre><code>chiikikatudou_b.htm  目次
+├ Fujinkai.htm / Fujinkai_kaihou.htm   婦人会・会報
+├ chojukai.htm                          桜台倶楽部（長寿会）
+├ otasukeman.htm                        桜台お助けマン ★2026/07更新
+├ patrol2.htm                           ボランティアパトロール隊
+├ hana.htm                              花ボランティア ★2025/04更新
+├ minsei_iin.html                        民生委員
+├ sakuradai_kurabu/                      桜台倶楽部
+├ PC_soudansitu.html                     パソコン相談室
+└ HP_iinkai.html  ホームページ作成委員会
+   ├ mail/mail_haishin.html   新着情報のメール配信受付
+   ├ pc_school/               パソコン教室
+   ├ Google_kensaku/          Google検索の使い方
+   └ test_coner/              テストページ ※公開されたまま</code></pre>
+<h3>サークル・グループ <code>/circle_group/</code></h3>
+<pre><code>group.htm → art.html 桜台五人展</code></pre>
+<h3>みんなの広場 <code>/minnanohiroba/</code> — 32ページ（独自frameset）</h3>
+<pre><code>flame_hiroba.html
+├ flame_hiroba_L.html  目次
+└ flame_hiroba_R.html  トップ
+   ├ photo.html / phote_01.html  写真（深城池周辺の四季 ほか）
+   ├ 300_photo/2012/…            写真アーカイブ
+   └ KiakaJoho/2013/…            桜の開花情報 2013（20ページ・title全て同一）</code></pre>
+<h3>生活情報 <code>/seikatu_jouho/</code> — 11ページ（独自frameset）</h3>
+<pre><code>00frame_seikau_jouho.html
+├ kinkyu_renraku.html   緊急連絡先
+└ seikatu_mokuji.htm    目次
+   ├ gomi.html          ごみ ★2026/06更新
+   ├ jikokuhyo/         バス時刻表
+   └ 10daishinsai/housyasenryou.html  桜台の放射線量</code></pre>
+<h3>自治会カレンダー <code>/calendar/</code> — 97ページ</h3>
+<pre><code>2011/01 〜 2018/11 の月別ページ。2018年11月で更新停止。
+全97ページの &lt;title&gt; が「自治会カレンダー」で同一。</code></pre>
+<h3>その他</h3>
+<pre><code>/topix/toshikeikan_syoureisyou/   第7回都市景観奨励賞受賞
+/chiku_joho/2009radio_taiso/      ラジオ体操2009
+/_100_title/                       未使用の表題素材</code></pre>
+<hr>
+<h2>3. コンテンツの生死（最終更新日ベース）</h2>
+<div class='tw'><table><thead><tr><th>状態</th><th>ページ数</th><th>内訳</th></tr></thead><tbody><tr><td>生きている（2025年以降更新）</td><td><b>22</b></td><td>回覧板、議事録、ごみ、お助けマン、SKP報告書、ホーム3点 ほか</td></tr><tr><td>停止（2024-07-28で一括停止）</td><td><b>230</b></td><td>旧ドメインからの移行日と思われる。イベント/カレンダー/みんなの広場/専門部/図書コーナー等</td></tr></tbody></table></div>
+<p>実質的に更新され続けているのは <b>回覧板・議事録・トップの更新情報</b> の3系統のみ。</p>
+<hr>
+<h2>4. 全252ページの一覧</h2>
+<p><code>_audit/full_list.md</code> に URL・タイトル・最終更新日を全件出力済み。<br>生データは <code>_audit/crawl.json</code>（リンク関係を含む）。</p>
+</div></body></html>
