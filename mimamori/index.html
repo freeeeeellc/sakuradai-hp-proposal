@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>桜台自治会 LINE見守りサービス ご提案</title>
+<style>
+:root{
+  --green:#1F4B3F; --green2:#2E6B58; --green-soft:#EDF3F0;
+  --sakura:#C4506E; --sakura-soft:#FCEFF2; --sakura-line:#F0CBD5;
+  --line-green:#06C755;
+  --ink:#1B2025; --muted:#5A646D; --line:#E2E6E8; --soft:#F7F8F7;
+  --warn:#B9483F;
+  --radius:14px;
+  --pad:52px;
+}
+*{box-sizing:border-box; margin:0; padding:0}
+body{
+  background:#E7EBE9; color:var(--ink);
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;
+  font-size:16px; line-height:1.85; -webkit-text-size-adjust:100%;
+  padding:26px 16px 60px;
+}
+img{max-width:100%; display:block}
+b{font-weight:700}
+
+/* ===== スライド ===== */
+.deck{max-width:1120px; margin:0 auto}
+.slide{
+  position:relative; background:#fff; border-radius:6px;
+  box-shadow:0 3px 22px rgba(20,40,30,.10);
+  min-height:630px; padding:44px var(--pad) 56px;
+  margin-bottom:26px; display:flex; flex-direction:column;
+}
+.slide > .no{
+  position:absolute; right:22px; bottom:14px;
+  font-size:.76rem; color:#A9B2B6; letter-spacing:.1em;
+}
+.slide h2{
+  font-size:1.62rem; color:var(--green); letter-spacing:.02em; line-height:1.45;
+  padding-bottom:14px; margin-bottom:22px; border-bottom:2px solid var(--green-soft);
+  display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+}
+.slide h2 .kicker{font-size:.8rem; color:var(--sakura); letter-spacing:.16em; font-weight:700}
+.slide h3{font-size:1.08rem; color:var(--green); margin:20px 0 10px}
+.slide h3:first-child{margin-top:0}
+p{margin-bottom:13px}
+.lead{font-size:1.06rem; line-height:1.9}
+.muted{color:var(--muted); font-size:.88rem; line-height:1.8}
+
+/* 表紙 */
+.cover{
+  background:linear-gradient(140deg,#1F4B3F 0%,#2E6B58 60%,#3C7F69 100%);
+  color:#fff; justify-content:center;
+}
+.cover .eyebrow{font-size:.86rem; letter-spacing:.24em; opacity:.85; margin-bottom:18px}
+.cover h1{font-size:2.5rem; line-height:1.5; letter-spacing:.04em; font-weight:700; margin-bottom:20px}
+.cover h1 small{display:block; font-size:1.05rem; font-weight:400; opacity:.9; letter-spacing:.08em; margin-top:12px}
+.cover .cl{font-size:1.06rem; opacity:.95; max-width:660px; line-height:1.95}
+.cover .meta{
+  margin-top:44px; padding-top:20px; border-top:1px solid rgba(255,255,255,.3);
+  display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; font-size:.92rem; opacity:.95
+}
+
+/* もくじ */
+.toc{list-style:none; counter-reset:t; display:grid; grid-template-columns:1fr 1fr; gap:2px 34px}
+.toc li{counter-increment:t; padding:9px 0; border-bottom:1px dotted var(--line); font-size:1rem; font-weight:600}
+.toc li::before{content:counter(t,decimal-leading-zero); color:var(--sakura); font-weight:700; margin-right:12px; font-size:.9rem}
+.toc li span{font-weight:400; color:var(--muted); font-size:.86rem; display:block; margin-left:34px; line-height:1.6}
+
+/* 数字カード */
+.stats{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:18px 0}
+.stat{background:var(--soft); border:1px solid var(--line); border-radius:var(--radius); padding:18px 14px; text-align:center}
+.stat b{display:block; font-size:1.9rem; line-height:1.25; color:var(--green); font-variant-numeric:tabular-nums}
+.stat b small{font-size:.9rem; font-weight:700}
+.stat span{font-size:.78rem; color:var(--muted); line-height:1.6; display:block; margin-top:5px}
+.stat.warn b{color:var(--warn)}
+
+/* 引用 */
+.quote{
+  border-left:5px solid var(--sakura); background:var(--sakura-soft);
+  padding:18px 24px; border-radius:0 10px 10px 0; margin:16px 0;
+}
+.quote p{margin:0 0 6px; font-size:1.02rem; line-height:1.9}
+.quote cite{display:block; font-style:normal; font-size:.84rem; color:var(--muted); margin-top:8px}
+
+/* 枠 */
+.box{border:1.5px solid #B9CFC5; background:#F1F7F4; border-radius:var(--radius); padding:20px 24px; margin:16px 0}
+.box h3{margin-top:0}
+.box.pink{border-color:var(--sakura-line); background:var(--sakura-soft)}
+.box.pink h3{color:var(--sakura)}
+.box.warn{border-color:#E7C2BE; background:#FCF2F1}
+.box.warn h3{color:var(--warn)}
+.box p:last-child{margin-bottom:0}
+
+ul.plain{list-style:none}
+ul.plain li{position:relative; padding-left:20px; margin-bottom:7px}
+ul.plain li::before{content:""; position:absolute; left:2px; top:.72em; width:8px; height:8px; border-radius:50%; background:var(--sakura)}
+ul.check{list-style:none}
+ul.check li{position:relative; padding-left:26px; margin-bottom:8px}
+ul.check li::before{content:"✓"; position:absolute; left:0; top:0; color:var(--green2); font-weight:700}
+ul.cross{list-style:none}
+ul.cross li{position:relative; padding-left:26px; margin-bottom:8px}
+ul.cross li::before{content:"×"; position:absolute; left:2px; top:0; color:var(--warn); font-weight:700}
+
+/* 表 */
+.tw{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:14px 0}
+table{width:100%; border-collapse:collapse; font-size:.93rem}
+.tw table{min-width:560px}
+th{background:var(--green); color:#fff; text-align:left; padding:10px 12px; font-size:.85rem; white-space:nowrap; font-weight:700}
+td{padding:10px 12px; border-top:1px solid #EDF0F1; vertical-align:top}
+tbody tr:nth-child(even){background:#FAFBFB}
+tr.hi td{background:var(--sakura-soft) !important; font-weight:700}
+.num{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap}
+.b{display:inline-block; font-size:.74rem; font-weight:700; padding:2px 10px; border-radius:999px; white-space:nowrap}
+.b.ok{background:#E4F1EA; color:#1F5C40}
+.b.ng{background:#FBEDEC; color:#9E3E36}
+
+/* 2カラム */
+.cols{display:grid; grid-template-columns:1fr 1fr; gap:26px}
+.cols3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+
+/* フロー（ステップ） */
+.flow{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:18px 0}
+.fl{background:var(--soft); border:1px solid var(--line); border-radius:var(--radius); padding:18px 18px 20px; position:relative}
+.fl .n{
+  width:34px; height:34px; border-radius:50%; background:var(--green); color:#fff;
+  display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.95rem; margin-bottom:11px
+}
+.fl > b{display:block; font-size:1.02rem; margin-bottom:5px; color:var(--green)}
+.fl p{margin:0; font-size:.92rem; line-height:1.8; color:#39424A}
+
+/* 縦フロー */
+.vflow{margin:16px 0}
+.vf{display:flex; gap:18px; align-items:flex-start; padding:14px 0; border-bottom:1px solid var(--line)}
+.vf:last-child{border-bottom:0}
+.vf .t{
+  flex:none; width:104px; text-align:center; background:var(--green); color:#fff;
+  border-radius:8px; padding:7px 0; font-weight:700; font-size:.9rem; font-variant-numeric:tabular-nums
+}
+.vf .t.s{background:var(--sakura)}
+.vf .t.w{background:var(--warn)}
+.vf .t.g{background:#8A8F94}
+.vf div.tx{flex:1}
+.vf .tx > b{display:block; margin-bottom:2px; font-size:1rem}
+.vf .tx p{margin:0; font-size:.93rem; color:#39424A; line-height:1.8}
+
+/* スマホモック */
+.phones{display:flex; gap:26px; justify-content:center; margin:14px 0 6px; flex-wrap:wrap}
+.phone{width:250px}
+.phone .body{
+  border-radius:26px; background:#20242A; padding:9px; box-shadow:0 8px 22px rgba(20,35,30,.18)
+}
+.phone .scr{background:#8CABD9; border-radius:18px; overflow:hidden; height:400px; display:flex; flex-direction:column}
+.phone .bar{background:var(--line-green); color:#fff; font-size:.76rem; font-weight:700; padding:8px 12px; letter-spacing:.02em; flex:none}
+.phone .chat{flex:1; padding:12px 11px; overflow:hidden; font-size:.78rem; line-height:1.7}
+.phone figcaption{font-size:.85rem; color:var(--muted); margin-top:11px; line-height:1.7; text-align:center}
+.bub{background:#fff; border-radius:4px 16px 16px 16px; padding:9px 12px; margin-bottom:9px; box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.bub.me{background:#8DE055; border-radius:16px 4px 16px 16px; margin-left:auto; width:fit-content; max-width:82%}
+.bub .ttl{font-weight:700; display:block; margin-bottom:3px}
+.btn-l{
+  display:block; text-align:center; background:#fff; color:#1F4B3F; border:1.5px solid var(--line-green);
+  border-radius:999px; padding:9px 8px; font-weight:700; font-size:.86rem; margin:7px 0 0
+}
+.btn-l.solid{background:var(--line-green); color:#fff; border-color:var(--line-green)}
+.ts{font-size:.62rem; color:#4A5A6B; margin:-5px 0 9px 4px}
+.sysmsg{text-align:center; font-size:.66rem; color:#fff; background:rgba(0,0,0,.28); border-radius:999px; padding:3px 10px; width:fit-content; margin:0 auto 10px}
+
+/* 責任の線引き */
+.split{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1.5px solid var(--line); border-radius:var(--radius); overflow:hidden; margin:16px 0}
+.split > div{padding:20px 22px}
+.split .do{background:#F1F7F4; border-right:1.5px solid var(--line)}
+.split .dont{background:#FCF2F1}
+.split h3{margin-top:0}
+.split .dont h3{color:var(--warn)}
+.split li{font-size:.95rem}
+
+/* お願い */
+.ask{border:2px solid var(--sakura); border-radius:var(--radius); padding:22px 26px; background:#fff; margin-top:14px}
+.ask ol{margin-left:22px}
+.ask li{margin-bottom:11px; font-size:1rem}
+.ask li b{color:var(--sakura)}
+.ask li span{display:block; font-size:.88rem; color:var(--muted); line-height:1.7; font-weight:400}
+
+/* 裏表紙 */
+.end{background:var(--green); color:#fff; justify-content:center; text-align:center}
+.end h1{font-size:1.9rem; line-height:1.7; letter-spacing:.05em; margin-bottom:22px}
+.end p{font-size:1rem; opacity:.94}
+.end .card{
+  margin:30px auto 0; max-width:520px; border:1px solid rgba(255,255,255,.35);
+  border-radius:var(--radius); padding:22px 26px; text-align:left; font-size:.94rem; line-height:2
+}
+
+/* ===== モバイル ===== */
+@media(max-width:900px){
+  body{font-size:15.5px; padding:14px 10px 40px}
+  :root{--pad:22px}
+  .slide{min-height:0; padding:28px var(--pad) 42px; margin-bottom:16px}
+  .slide h2{font-size:1.3rem}
+  .cover h1{font-size:1.72rem}
+  .end h1{font-size:1.4rem}
+  .toc{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .cols,.cols3,.flow{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  .split .do{border-right:0; border-bottom:1.5px solid var(--line)}
+  .vf{flex-direction:column; gap:8px}
+  .vf .t{width:104px}
+  .phones{gap:18px}
+  .phone{width:100%; max-width:270px}
+}
+
+/* ===== 印刷（A4縦・連続する配布資料として） ===== */
+@page{size:A4 portrait; margin:12mm 11mm}
+@media print{
+  html{font-size:10.5px}
+  body{background:#fff; padding:0; font-size:10.5px}
+  :root{--pad:0px}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  .deck{max-width:none}
+  .slide{
+    box-shadow:none; border-radius:0; min-height:0; overflow:visible;
+    margin:0 0 9mm; padding:0 0 7mm; border-bottom:1px solid #D8DEDB;
+    break-inside:auto; page-break-inside:auto; display:block;
+  }
+  .slide > .no{position:static; display:block; text-align:right; margin-top:5mm}
+  .slide h2{font-size:1.34rem; margin-bottom:14px; break-after:avoid; page-break-after:avoid}
+  .slide h3{break-after:avoid; page-break-after:avoid}
+  /* 中の塊は途中で切らない */
+  .box,.fl,.vf,.stat,.phone,.quote,.ask,.split>div,.toc li{
+    break-inside:avoid; page-break-inside:avoid;
+  }
+  table{break-inside:auto}
+  tr{break-inside:avoid; page-break-inside:avoid}
+  thead{display:table-header-group}
+  .tw{overflow:visible}
+  .tw table{min-width:0}
+  /* 表紙・裏表紙だけは単独ページ */
+  .cover{break-after:page; page-break-after:always; border-bottom:0; min-height:150mm; padding:26mm 16mm}
+  .end{break-before:page; page-break-before:always; border-bottom:0; min-height:150mm; padding:26mm 16mm}
+  .phone .scr{height:auto; min-height:0}
+  .phone .chat{padding-bottom:14px}
+}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- 01 表紙 -->
+<section class="slide cover">
+  <div class="eyebrow">桜台自治会　会長・本部役員会 ご提案</div>
+  <h1>LINEで、毎朝ひと言。<small>桜台自治会 見守りサービスのご提案</small></h1>
+  <p class="cl">
+    自治会の公式LINEから毎朝ひと言お送りし、ボタンを押していただくだけ。<br>
+    数日お返事がない方を仕組みが自動で見つけ、担当者からご家族へお伝えします。<br>
+    役員の負担を増やさずに、「いつもと違う」に気づける仕組みです。
+  </p>
+  <div class="meta">
+    <span>2026年8月</span>
+    <span>ご提案：桜台自治会　辻 史人</span>
+  </div>
+  <span class="no">1</span>
+</section>
+
+<!-- 02 もくじ -->
+<section class="slide">
+  <h2><span class="kicker">CONTENTS</span>もくじ</h2>
+  <ol class="toc">
+    <li>なぜ今、この仕組みなのか<span>会長挨拶にある課題と、桜台の現状</span></li>
+    <li>ご提案の全体像<span>やることは「毎朝ひと言」だけ</span></li>
+    <li>会員の方から見た画面<span>実際のスマホでの見え方</span></li>
+    <li>仕組み① 登録のとき<span>アンケートで地区ごとに自動でグループ分け</span></li>
+    <li>仕組み② 毎日のながれ<span>押した人・押さなかった人</span></li>
+    <li>仕組み③ 3日目に起きること<span>自動で見つけ、担当者からご家族へ</span></li>
+    <li>「間違い連絡」を防ぐ工夫<span>お休み設定と「前回お返事した日」</span></li>
+    <li>自治会がやること／やらないこと<span>責任の範囲をはっきりさせる</span></li>
+    <li>いまある取り組みとの関係<span>お助けマン・民生委員・市原市の制度</span></li>
+    <li>見守り以外にも使えます<span>回覧板・防災・地区別のお知らせ</span></li>
+    <li>個人情報の取り扱い<span>何を預かり、誰が見て、いつ消すか</span></li>
+    <li>費用<span>登録者数ごとの月額</span></li>
+    <li>進め方（3段階）<span>小さく試してから広げる</span></li>
+    <li>お願いしたいこと<span>ご判断いただきたい5点</span></li>
+  </ol>
+  <span class="no">2</span>
+</section>
+
+<!-- 03 なぜ今か -->
+<section class="slide">
+  <h2><span class="kicker">01</span>なぜ今、この仕組みなのか</h2>
+  <div class="quote">
+    <p>桜台自治会が昭和56年11月22日にできて44年が経過し、<b>その当時40歳の人は80代半ばとなっており</b>……</p>
+    <p>高齢の方のための病院の送迎や庭の伐採を行う「お助けマン互助会」も<b>会員数200名を超えています</b>。</p>
+    <cite>令和7年度 会長の挨拶（大竹 幸夫 会長）／自治会ホームページより</cite>
+  </div>
+  <p class="lead">
+    会長挨拶が示すとおり、桜台は<b>設立世代がそのまま80代を迎えた町</b>です。
+    お助けマン互助会に200名を超える方が集まっているのは、<b>すでに助けを必要とする方がそれだけいる</b>ということでもあります。
+  </p>
+  <div class="stats">
+    <div class="stat"><b>44<small>年</small></b><span>自治会設立から<br>（昭和56年11月22日）</span></div>
+    <div class="stat"><b>200<small>名超</small></b><span>お助けマン互助会<br>会員数（令和7年度）</span></div>
+    <div class="stat warn"><b>申込<small>起点</small></b><span>いまの支援は<br>すべて「頼まれてから」</span></div>
+    <div class="stat warn"><b>0<small>件</small></b><span>「頼めない人」を<br>見つける仕組み</span></div>
+  </div>
+  <div class="box warn">
+    <h3>いまの仕組みで拾えないこと</h3>
+    <p>
+      お助けマンも、民生委員の訪問も、市原市の見守りネットワークも、<b>すべて「困った人が声を上げる」または「誰かが偶然気づく」</b>ことが出発点です。
+      倒れてしまった方・体調を崩して電話もできない方・そもそも人に頼るのが苦手な方は、<b>数日誰にも気づかれません。</b><br>
+      必要なのは、<b>こちらから毎日、軽く声をかける</b>仕組みです。
+    </p>
+  </div>
+  <span class="no">3</span>
+</section>
+
+<!-- 04 全体像 -->
+<section class="slide">
+  <h2><span class="kicker">02</span>ご提案の全体像 ── やることは「毎朝ひと言」だけ</h2>
+  <p class="lead">自治会の公式LINEアカウントをつくり、登録された会員の方へ<b>毎朝1通、自動でメッセージを送ります。</b>
+     受け取った方は<b>ボタンを1回押すだけ。</b>それだけで安否がわかります。</p>
+  <div class="flow">
+    <div class="fl"><div class="n">1</div><b>登録する</b>
+      <p>友だち追加すると、その場でアンケートが始まります。お住まいの丁目・世帯の状況・ご家族の連絡先をうかがい、<b>自動で地区ごとに振り分け</b>ます。</p></div>
+    <div class="fl"><div class="n">2</div><b>毎朝うけとる</b>
+      <p>朝8時に「おはようございます」と1通。<b>［元気です］のボタンを押すだけ</b>で完了です。文字を打つ必要はありません。</p></div>
+    <div class="fl"><div class="n">3</div><b>返事がなければ</b>
+      <p>2日続けて反応がなければ、もう一度おうかがいします。<b>3日目に担当者へ自動で通知</b>が届き、担当者がご家族へお電話します。</p></div>
+  </div>
+  <div class="cols">
+    <div class="box">
+      <h3>役員の手間は、ほぼゼロ</h3>
+      <p>毎朝の配信も、返事の記録も、お返事がない方の抽出も<b>すべて自動</b>です。役員が毎日画面を見張る必要はありません。
+         必要なときだけ、担当の方のスマホにお知らせが届きます。</p>
+    </div>
+    <div class="box pink">
+      <h3>会員の方の手間も、ほぼゼロ</h3>
+      <p>スマホでLINEを使っている方なら、<b>操作は「ボタンを1回押す」だけ</b>。
+         アプリを新しく入れる必要も、機械を家に置く必要もありません。</p>
+    </div>
+  </div>
+  <p class="muted">※ 使うのは、LINE社の「LINE公式アカウント」と、その管理ツール「Lステップ」です。どちらも全国の自治体・自治会で使われている既製のサービスで、新しくシステムを開発するものではありません。</p>
+  <span class="no">4</span>
+</section>
+
+<!-- 05 会員から見た画面 -->
+<section class="slide">
+  <h2><span class="kicker">03</span>会員の方から見た画面</h2>
+  <p>実際にスマホに届く見え方です。<b>文字は大きく、押すところは1か所だけ</b>にします。</p>
+  <div class="phones">
+    <figure class="phone">
+      <div class="body"><div class="scr">
+        <div class="bar">桜台自治会</div>
+        <div class="chat">
+          <div class="sysmsg">友だち追加しました</div>
+          <div class="bub"><span class="ttl">桜台自治会です</span>ご登録ありがとうございます。3つだけ質問させてください。</div>
+          <div class="bub"><span class="ttl">お住まいはどちらですか？</span>
+            <span class="btn-l">桜台 1丁目</span>
+            <span class="btn-l">桜台 2丁目</span>
+            <span class="btn-l">桜台 3丁目</span>
+          </div>
+        </div>
+      </div></div>
+      <figcaption><b>① 登録直後</b><br>その場でアンケートが始まります</figcaption>
+    </figure>
+    <figure class="phone">
+      <div class="body"><div class="scr">
+        <div class="bar">桜台自治会</div>
+        <div class="chat">
+          <div class="sysmsg">8月21日（金）</div>
+          <div class="bub"><span class="ttl">おはようございます</span>桜台自治会です。<br>今日も一日、お元気にお過ごしください。<br><br>お変わりなければ、下のボタンを押してください。
+            <span class="btn-l solid">元気です</span>
+          </div>
+          <div class="ts">8:00</div>
+          <div class="bub me">元気です</div>
+          <div class="ts" style="text-align:right; margin-right:4px">8:12</div>
+          <div class="bub">ありがとうございます。<br>よい一日をお過ごしください。</div>
+        </div>
+      </div></div>
+      <figcaption><b>② 毎朝8時</b><br>ボタンを1回押すだけで完了</figcaption>
+    </figure>
+    <figure class="phone">
+      <div class="body"><div class="scr">
+        <div class="bar">桜台自治会</div>
+        <div class="chat">
+          <div class="bub"><span class="ttl">おでかけ・入院のとき</span>しばらく確認をお休みできます。日数を選んでください。
+            <span class="btn-l">3日間おやすみ</span>
+            <span class="btn-l">1週間おやすみ</span>
+            <span class="btn-l">2週間おやすみ</span>
+          </div>
+          <div class="bub me">1週間おやすみ</div>
+          <div class="bub">承知しました。<br>8月28日の朝から再開します。<br>お気をつけて行ってらっしゃい。</div>
+        </div>
+      </div></div>
+      <figcaption><b>③ お休み設定</b><br>旅行・入院のときの誤報を防ぎます</figcaption>
+    </figure>
+  </div>
+  <p class="muted">※ 画面は説明のためのイメージです。文言・ボタンの数・配信時刻は、運用に合わせて自由に変更できます。</p>
+  <span class="no">5</span>
+</section>
+
+<!-- 06 仕組み1 登録 -->
+<section class="slide">
+  <h2><span class="kicker">04</span>仕組み① 登録のとき ── アンケートで自動グループ分け</h2>
+  <p class="lead">友だち追加していただくと、その場でアンケートが始まります。<b>お答えいただいた内容で、自動的にグループ分けされます。</b>
+     役員が名簿に手入力する作業はありません。</p>
+  <div class="tw"><table>
+    <thead><tr><th style="width:34%">おうかがいすること</th><th style="width:30%">選び方</th><th>できるようになること</th></tr></thead>
+    <tbody>
+      <tr><td><b>お名前</b></td><td>入力（1回だけ）</td><td>誰からの返事かがわかる</td></tr>
+      <tr class="hi"><td><b>お住まいの地区</b></td><td>丁目・組をボタンで選択</td><td><b>地区ごとの一斉連絡ができる</b>（工事・断水・不審者情報など）</td></tr>
+      <tr><td><b>ご世帯の状況</b></td><td>ひとり暮らし／夫婦のみ／同居家族あり</td><td>ひとり暮らしの方を優先して見守れる</td></tr>
+      <tr class="hi"><td><b>見守り配信のご希望</b></td><td>希望する／希望しない</td><td><b>希望された方にだけ</b>毎朝の配信を送る</td></tr>
+      <tr><td><b>ご家族の緊急連絡先</b></td><td>お名前・続柄・電話番号<br><span class="muted">（見守りを希望される方のみ）</span></td><td>お返事がないときの<b>連絡先になる</b></td></tr>
+      <tr><td><b>ご年代</b>（任意）</td><td>60代／70代／80代以上 など</td><td>お知らせの内容を年代別に分けられる</td></tr>
+    </tbody>
+  </table></div>
+  <div class="cols">
+    <div class="box">
+      <h3>登録のお手伝いもセットで</h3>
+      <p>自治会にはすでに<b>「パソコン相談室」</b>があります。ここで登録会を開けば、スマホの操作が不安な方でもその場で登録できます。
+         役員会・防災訓練・夏祭りなどの場でも同時に登録会を行えます。</p>
+    </div>
+    <div class="box pink">
+      <h3>紙の申込書でも登録できます</h3>
+      <p>LINEを使っていないご家庭のために、<b>ご家族のスマホで代理登録</b>する方法も用意します。
+         「離れて暮らす息子さん・娘さんが登録し、通知を受け取る」形です。</p>
+    </div>
+  </div>
+  <span class="no">6</span>
+</section>
+
+<!-- 07 仕組み2 毎日 -->
+<section class="slide">
+  <h2><span class="kicker">05</span>仕組み② 毎日のながれ</h2>
+  <div class="vflow">
+    <div class="vf"><div class="t">毎朝 8:00</div><div class="tx">
+      <b>「おはようございます」を自動配信</b>
+      <p>見守りを希望された方だけに、1通お送りします。［元気です］のボタンつき。同時に、その方の「お返事なし日数」を1つ増やします。</p></div></div>
+    <div class="vf"><div class="t">日中</div><div class="tx">
+      <b>ボタンを押した方 → その場で完了</b>
+      <p>「ありがとうございます」と自動でお返事し、<b>「お返事なし日数」は0に戻り、「前回お返事した日」が今日で記録されます。</b>押した方はここで終わりです。</p></div></div>
+    <div class="vf"><div class="t s">2日目の朝</div><div class="tx">
+      <b>もう一度おうかがいする</b>
+      <p>日数が2になった方へ「昨日・今日とお返事をいただけていません。お変わりなければボタンを押してください」と、もう一度お送りします。<b>この時点ではまだ誰にも連絡しません。</b></p></div></div>
+    <div class="vf"><div class="t w">3日目の朝</div><div class="tx">
+      <b>該当する方を自動で抽出し、見守り担当へ通知</b>
+      <p>日数が3になった方を仕組みが自動で抽出し、担当者へ通知が届きます。担当者は<b>あらかじめ用意された該当者の一覧を開くだけ</b>で、どなたかが分かります。</p></div></div>
+    <div class="vf"><div class="t w">そのあと</div><div class="tx">
+      <b>担当者がご家族へお電話する</b>
+      <p>通知を受けた担当者が、登録されたご家族へご連絡します。<b>ここだけは人が行います。</b><span class="muted">→ 詳細は次のページ</span></p></div></div>
+  </div>
+  <div class="box">
+    <h3>役員がすることは「3日目の通知が来たときだけ」</h3>
+    <p>毎朝の配信・記録・カウント・該当する方の抽出は、すべて設定どおりに自動で動きます。
+       役員が毎日ログインして確認する必要はありません。<b>通知が来ない日は、全員無事という意味です。</b></p>
+  </div>
+  <span class="no">7</span>
+</section>
+
+<!-- 08 仕組み3 エスカレーション -->
+<section class="slide">
+  <h2><span class="kicker">06</span>仕組み③ 3日目に起きること</h2>
+  <p class="lead">ここが<b>この企画でいちばん大事な部分</b>です。誰が、どこまで動くのかをはっきり決めておきます。</p>
+  <div class="vflow">
+    <div class="vf"><div class="t w">第1報</div><div class="tx">
+      <b>見守り担当へ（ここまで自動）</b>
+      <p>「3日間お返事のない方がいます」という通知が、担当者（1〜2名）のスマホとメールへ自動で届きます。
+         担当者は<b>あらかじめ用意された該当者の一覧</b>を開き、どなたか・前回お返事した日はいつかを確認します。</p></div></div>
+    <div class="vf"><div class="t s">担当者</div><div class="tx">
+      <b>ご登録のご家族へお電話（ここは人が行います）</b>
+      <p>担当者が、登録された緊急連絡先へお電話します。<b>安否を確かめに行くのは、原則ご家族です。</b>
+         担当者は電話をかけるところまでで、訪問の義務は負いません。</p></div></div>
+    <div class="vf"><div class="t g">第2報<br><span style="font-size:.8em">（24時間後）</span></div><div class="tx">
+      <b>ご家族と連絡がつかない場合</b>
+      <p>あらかじめご本人の同意をいただいたうえで、<b>地区の民生委員・地域包括支援センター（いちはら高齢者見守りネットワーク）</b>へ連絡します。
+         ここから先は市原市の既存の制度に引き継ぎます。</p></div></div>
+    <div class="vf"><div class="t g">最終</div><div class="tx">
+      <b>それでも確認できない場合</b>
+      <p>市原市・警察（市原警察署）へ相談します。<b>自治会の判断で家に立ち入ることはしません。</b></p></div></div>
+  </div>
+  <div class="box warn">
+    <h3>会員の方にあらかじめお伝えすること（規約に明記します）</h3>
+    <p>
+      本サービスは<b>緊急通報システムではありません。</b>119番・110番の代わりにはなりません。<br>
+      通信状況・スマホの電池切れ・操作忘れなどにより、異変に気づけない場合があります。<br>
+      自治会は<b>「気づいてお知らせする」ところまで</b>を担い、生命・身体の安全を保証するものではありません。
+    </p>
+  </div>
+  <span class="no">8</span>
+</section>
+
+<!-- 09 誤報を防ぐ -->
+<section class="slide">
+  <h2><span class="kicker">07</span>「間違い連絡」を防ぐ工夫</h2>
+  <p class="lead">この手の仕組みでいちばん困るのは、<b>元気なのに家族へ連絡が飛んでしまう</b>ことです。
+     一度でも起きると、会員の方も役員も信用しなくなります。だから最初から作り込みます。</p>
+  <div class="cols">
+    <div>
+      <h3>① 「おやすみ」ボタン</h3>
+      <p>旅行・入院・帰省などのときは、ご本人が<b>3日／1週間／2週間</b>から選んでお休みにできます。期間中は配信もカウントも止まり、終了後に自動で再開します。</p>
+      <h3>② 2日目に必ずもう一度</h3>
+      <p>いきなり3日目に連絡するのではなく、<b>2日目の朝に確認のメッセージを1通</b>挟みます。押し忘れの方はここで拾えます。</p>
+      <h3>③ 「前回お返事した日」を記録する</h3>
+      <p>ボタンを押すたびに<b>その日付が自動で記録</b>され、該当者の一覧にも表示されます。担当者は「毎日押していた方が3日空いた」のか「もともと数日おきの方」なのかを見て判断できます。</p>
+    </div>
+    <div>
+      <h3>④ 押す時間に幅をもたせる</h3>
+      <p>朝8時に配信しますが、<b>その日のうちに押せば当日分としてカウント</b>します。早起きしていなくても大丈夫です。</p>
+      <h3>⑤ 日数はあとから変えられる</h3>
+      <p>「3日は長い／短い」というご意見が出たら、<b>設定を変えるだけ</b>で2日にも4日にも変更できます。作り直しは不要です。</p>
+      <h3>⑥ 試験運用でまず確かめる</h3>
+      <p>いきなり全会員に広げず、<b>役員と希望者20〜30名で1〜2か月試して</b>から本格運用に入ります（→ 15ページ）。</p>
+    </div>
+  </div>
+  <span class="no">9</span>
+</section>
+
+<!-- 10 責任の線引き -->
+<section class="slide">
+  <h2><span class="kicker">08</span>自治会がやること／やらないこと</h2>
+  <p class="lead">役員の負担と責任が青天井にならないよう、<b>最初にはっきり線を引いておきます。</b>
+     ここが曖昧なままだと、担当を引き受けてくださる方がいなくなります。</p>
+  <div class="split">
+    <div class="do">
+      <h3>自治会がやること</h3>
+      <ul class="check">
+        <li>公式LINEアカウントを開設し、登録を呼びかける</li>
+        <li>毎朝のメッセージを自動で送る（設定するだけ）</li>
+        <li>お返事がない方を自動で見つける</li>
+        <li>該当する方を自動で見つけ、<b>担当者からご家族へお電話する</b></li>
+        <li>ご家族と連絡がつかないとき、民生委員・地域包括支援センターへつなぐ</li>
+        <li>登録内容を適切に管理し、退会時に消去する</li>
+      </ul>
+    </div>
+    <div class="dont">
+      <h3>自治会がやらないこと</h3>
+      <ul class="cross">
+        <li>役員が毎日画面を見張ること</li>
+        <li>役員がご自宅へ駆けつけること<br><span class="muted">（安否確認はご家族、または公的機関の役割です）</span></li>
+        <li>鍵を預かること・室内へ立ち入ること</li>
+        <li>救急・警察への通報を代行すること</li>
+        <li>健康相談・介護相談に応じること</li>
+        <li><b>安否・生命の保証をすること</b></li>
+      </ul>
+    </div>
+  </div>
+  <div class="box">
+    <h3>見守り担当は「1〜2名」で足ります</h3>
+    <p>担当者がすることは、<b>通知が届いたときに一覧を開いて該当の方を確認し、ご家族へお電話する</b>ことだけです。訪問はしません。
+       通常は月に数件、あるいはゼロ件です。専門部の福祉部、または本部役員から1〜2名で運用できます。</p>
+  </div>
+  <span class="no">10</span>
+</section>
+
+<!-- 11 既存との関係 -->
+<section class="slide">
+  <h2><span class="kicker">09</span>いまある取り組みとの関係 ── 重ならず、補い合う</h2>
+  <p class="lead">桜台と市原市には、すでに複数の見守りの仕組みがあります。この企画は<b>それらを置き換えるものではなく、その「入口」を早くするもの</b>です。</p>
+  <div class="tw"><table>
+    <thead><tr><th style="width:26%">いまある取り組み</th><th style="width:34%">いまの役割</th><th>LINE見守りが足すもの</th></tr></thead>
+    <tbody>
+      <tr><td><b>桜台お助けマン互助会</b><br><span class="muted">会員200名超</span></td>
+          <td>頼まれた作業を手伝う<br><span class="muted">（庭木・水回り・送迎など。申込みが起点）</span></td>
+          <td><b>「頼めない人」をこちらから見つける。</b>作業の依頼はこれまでどおりお助けマンへ</td></tr>
+      <tr><td><b>民生委員</b></td>
+          <td>定期的な訪問・相談対応</td>
+          <td><b>訪問の優先順位がわかる。</b>「今週この方が気になる」という材料になる</td></tr>
+      <tr><td><b>いちはら高齢者見守り<br>ネットワーク</b><br><span class="muted">市原市・2015年〜</span></td>
+          <td>異変に気づいた団体が地域包括支援センターへ連絡</td>
+          <td><b>その「異変」を毎日拾う。</b>連絡する側の情報源になる</td></tr>
+      <tr><td><b>安心生活見守り訪問支援</b><br><span class="muted">市原市・小域福祉ネットワーク</span></td>
+          <td>安心訪問員による訪問・声かけ</td>
+          <td>同上。訪問先の選定に使える</td></tr>
+      <tr><td><b>避難行動要支援者制度</b></td>
+          <td>災害時の安否確認・避難支援</td>
+          <td><b>平時から名簿が動いている状態</b>にできる。災害時は一斉に安否確認できる</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box pink">
+    <h3>お助けマン互助会とは、競合しません</h3>
+    <p>お助けマンは<b>「頼まれてから動く」</b>仕組み、LINE見守りは<b>「頼まれる前に気づく」</b>仕組みです。
+       むしろ、LINEで気づいた困りごとをお助けマンへおつなぎすることで、<b>お助けマンの利用が増えます。</b>
+       導入前に、お助けマン互助会の運営の方へご説明し、ご了解をいただく段取りとします。</p>
+  </div>
+  <span class="no">11</span>
+</section>
+
+<!-- 12 副次効果 -->
+<section class="slide">
+  <h2><span class="kicker">10</span>見守り以外にも使えます</h2>
+  <p class="lead">同じ公式LINEアカウントで、<b>追加費用なしに</b>次のことができます。
+     とくに<b>SKP（桜台自治会改革プロジェクト）で課題に挙がった項目</b>に、そのまま効きます。</p>
+  <div class="cols3">
+    <div class="box">
+      <h3>回覧板をLINEでも</h3>
+      <p>回覧を待たずに全会員へ即日届きます。紙の回覧はそのまま続けたうえで、<b>LINEにも同じものを流す</b>形です。
+        <span class="muted">※ SKP添付資料4「回覧板の見直し」</span></p>
+    </div>
+    <div class="box">
+      <h3>地区ごとの一斉連絡</h3>
+      <p>登録時にうかがった丁目で自動的に分かれているので、<b>「3丁目だけに断水のお知らせ」</b>といった配信ができます。</p>
+    </div>
+    <div class="box">
+      <h3>災害時の一斉安否確認</h3>
+      <p>地震・台風の直後に、<b>全員へ一斉に安否確認ボタン</b>を送れます。反応のない世帯がその場で一覧になります。
+        <span class="muted">※ 避難行動要支援者制度と接続</span></p>
+    </div>
+    <div class="box">
+      <h3>行事の出欠受付</h3>
+      <p>夏祭り・防災訓練・公園清掃の出欠を、<b>ボタンで集計</b>できます。名簿の手集計が不要になります。</p>
+    </div>
+    <div class="box">
+      <h3>悪質商法への注意喚起</h3>
+      <p>市原市消費生活センター・市原警察署の注意情報を、<b>その日のうちに全戸へ</b>届けられます。回覧では間に合いません。</p>
+    </div>
+    <div class="box">
+      <h3>ホームページへの入口</h3>
+      <p>スマホの画面下のメニューから、回覧・行事予定・自治会館の案内へ<b>1タップで移動</b>できます。</p>
+    </div>
+  </div>
+  <span class="no">12</span>
+</section>
+
+<!-- 13 個人情報 -->
+<section class="slide">
+  <h2><span class="kicker">11</span>個人情報の取り扱い</h2>
+  <p class="lead">ご家族の連絡先をお預かりする以上、<b>ここを曖昧にしたまま始めることはできません。</b>
+     あらかじめ規約と同意書を用意し、ご登録時に同意をいただきます。</p>
+  <div class="tw"><table>
+    <thead><tr><th style="width:22%">項目</th><th>取り扱い</th></tr></thead>
+    <tbody>
+      <tr><td><b>預かるもの</b></td><td>お名前／お住まいの地区（丁目・組）／世帯の状況／ご家族の連絡先（お名前・続柄・電話番号）／ご年代（任意）<br><span class="muted">住所の番地・生年月日・健康状態などは<b>お預かりしません</b></span></td></tr>
+      <tr><td><b>使う目的</b></td><td>見守りの配信と、お返事がないときのご連絡。<b>自治会の活動のお知らせ。それ以外には使いません</b></td></tr>
+      <tr class="hi"><td><b>見られる人</b></td><td><b>見守り担当（1〜2名）と、システム管理担当のみ。</b>役員全員が見られる状態にはしません。担当者ごとに権限を分けて設定します</td></tr>
+      <tr><td><b>保管場所</b></td><td>LINE公式アカウントの管理ツール（Lステップ）内。<b>紙の名簿は作りません</b>（作れば紛失リスクが生まれるため）</td></tr>
+      <tr class="hi"><td><b>外部提供</b></td><td>3日間お返事がない場合の<b>ご家族への連絡</b>、およびご家族と連絡がつかない場合の<b>民生委員・地域包括支援センター・市原市・警察への連絡</b>に限ります。<b>この範囲をご登録時に明示し、同意をいただきます</b></td></tr>
+      <tr><td><b>絶対にしないこと</b></td><td>ホームページへの掲載／名簿の配布／営利目的での利用／同意のない第三者への提供</td></tr>
+      <tr><td><b>やめるとき</b></td><td>ブロック・退会でいつでも停止できます。<b>ご希望があれば登録内容を消去</b>します</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">※ ご家族の連絡先は「ご家族ご本人の同意」も必要になります。登録アンケートの中で、ご本人からご家族へお伝えいただく案内を入れます。</p>
+  <span class="no">13</span>
+</section>
+
+<!-- 14 費用 -->
+<section class="slide">
+  <h2><span class="kicker">12</span>費用</h2>
+  <p class="lead">かかるのは<b>LINE社のアカウント利用料と、管理ツールの月額</b>だけです。
+     どちらも月額制で、<b>初期費用も、機器の購入費もかかりません。</b></p>
+  <h3>前提：毎朝1通 × 30日 ＝ おひとり月30通</h3>
+  <div class="tw"><table>
+    <thead><tr><th style="width:16%">登録者数</th><th style="width:16%" class="num">月間の通数</th><th style="width:24%">LINE公式アカウント</th><th style="width:24%">管理ツール（Lステップ）</th><th class="num">月額合計</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td><b>〜120名</b></td><td class="num">〜3,600通</td><td>ライトプラン 5,000円<br><span class="muted">月5,000通まで</span></td><td>プロプラン 32,780円<br><span class="muted">月50,000通まで</span></td><td class="num"><b>37,780円</b><br><span class="muted">年 約45万円</span></td></tr>
+      <tr><td><b>〜1,000名</b></td><td class="num">〜30,000通</td><td>スタンダードプラン 15,000円<br><span class="muted">月30,000通まで</span></td><td>プロプラン 32,780円<br><span class="muted">月50,000通まで</span></td><td class="num"><b>47,780円</b><br><span class="muted">年 約57万円</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="cols">
+    <div class="box">
+      <h3>なぜ上位プランが必要なのか</h3>
+      <p>「3日お返事がない方を、決まった時刻に自動で見つけて担当者へ知らせる」という<b>時刻で動く自動処理</b>が、管理ツールの<b>プロプランでのみ使える機能</b>だからです。
+         あわせて、<b>担当者ごとに閲覧権限を分ける機能</b>も同じプランに含まれます（→ 13ページ）。</p>
+    </div>
+    <div class="box pink">
+      <h3>構築・運用は無償でお引き受けします</h3>
+      <p>アンケートの設計、毎朝の配信設定、お返事なし判定の作り込み、登録会の運営、操作マニュアルの作成までを、
+         <b>地域貢献として無償</b>でお引き受けします。<b>外部への委託費はかかりません。</b></p>
+    </div>
+  </div>
+  <p class="muted">
+    ※ 金額はいずれも税込・2026年8月時点の公表価格です。LINE社の料金は改定されることがあります（2026年10月に追加メッセージ料金の改定が予定されています）。<br>
+    ※ 月額制のため、初期費用・機器の購入費・長期契約はありません。解約すればその月で費用は終わります。
+  </p>
+  <span class="no">14</span>
+</section>
+
+<!-- 15 進め方 -->
+<section class="slide">
+  <h2><span class="kicker">13</span>進め方（3段階）</h2>
+  <p class="lead">いきなり全会員へ広げず、<b>小さく試して、問題を潰してから広げます。</b>各段階の終わりに役員会へご報告し、次へ進むかをご判断いただきます。</p>
+  <div class="vflow">
+    <div class="vf"><div class="t">第1段階<br><span style="font-size:.8em">1〜2か月</span></div><div class="tx">
+      <b>試験運用 ── 役員＋希望者 20〜30名</b>
+      <p>本部役員と、ご協力いただける会員の方だけで実際に動かします。<b>配信時刻・文面・日数のしきい値・誤報の有無</b>をここで確かめます。
+         費用は月37,780円（1〜2か月で7〜8万円）。<b>この段階では会員への告知はしません。</b></p></div></div>
+    <div class="vf"><div class="t s">第2段階<br><span style="font-size:.8em">3〜6か月</span></div><div class="tx">
+      <b>本格運用 ── 1〜2地区、50〜120名</b>
+      <p>回覧・総会・パソコン相談室で登録会を実施。<b>民生委員・お助けマン互助会と連携の形を確認</b>したうえで開始します。
+         同時に、回覧板のLINE配信も始めます。費用は月37,780円のまま（登録者120名まで）。</p></div></div>
+    <div class="vf"><div class="t g">第3段階<br><span style="font-size:.8em">7か月〜</span></div><div class="tx">
+      <b>全地区へ拡大 ── 防災・行事にも展開</b>
+      <p>全丁目へ広げ、災害時の一斉安否確認・行事の出欠受付・地区別のお知らせにも使います。
+         登録者数に応じてプランを上げます。<b>市原市の見守りネットワークへの正式な参加も検討します。</b></p></div></div>
+  </div>
+  <div class="box">
+    <h3>いつでもやめられます</h3>
+    <p>月額制のため、<b>解約すればその月で費用は終わります。</b>機器の購入も長期契約もありません。
+       「合わなかった」と判断された場合、いつでも止められる形にしてあります。</p>
+  </div>
+  <span class="no">15</span>
+</section>
+
+<!-- 16 お願い -->
+<section class="slide">
+  <h2><span class="kicker">14</span>お願いしたいこと</h2>
+  <p class="lead">本日ご判断いただきたいのは、<b>「第1段階（試験運用）を始めてよいか」</b>の1点です。
+     あわせて、次の項目についてご意見をいただければと思います。</p>
+  <div class="ask">
+    <ol>
+      <li><b>試験運用のご承認</b>
+        <span>役員＋希望者20〜30名で、1〜2か月の試験運用を行うこと。費用は月37,780円（1〜2か月で7〜8万円）。</span></li>
+      <li><b>見守り担当者を1〜2名お決めいただくこと</b>
+        <span>お返事がない方の通知を受け取る役です。訪問の義務は負いません。福祉部または本部役員から。</span></li>
+      <li><b>規約と同意書のご承認</b>
+        <span>個人情報の取り扱い（13ページ）と、「緊急通報システムではない」旨の明記（8ページ）を含みます。案は当方で用意します。</span></li>
+      <li><b>お助けマン互助会・民生委員へのご説明の段取り</b>
+        <span>本格運用の前に、役割分担についてご了解をいただきたいと考えています。どなたにお話しすればよいかをご教示ください。</span></li>
+      <li><b>パソコン相談室での登録会のご相談</b>
+        <span>スマホ操作に不安のある方の登録支援を、既存のパソコン相談室と一緒にできないでしょうか。</span></li>
+    </ol>
+  </div>
+  <span class="no">16</span>
+</section>
+
+<!-- 17 裏表紙 -->
+<section class="slide end">
+  <h1>「一人はみんなのために<br>　みんなは一人のために！」</h1>
+  <p>会長挨拶にあるこの言葉を、毎朝ひと言という形にしたのが、この企画です。<br>
+     ご意見・ご懸念をいただければ、その場で設計に反映いたします。</p>
+  <div class="card">
+    <b>ご提案</b>　桜台自治会　辻 史人<br>
+    <b>本件のご連絡先</b>　桜台自治会館　TEL 0436-66-1341<br>
+    <b>桜台自治会ホームページ</b>　https://桜台自治会.com/<br>
+    <span style="opacity:.8; font-size:.86rem">2026年8月　作成</span>
+  </div>
+  <span class="no">17</span>
+</section>
+
+</div>
+</body>
+</html>
